@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browser with Autocomplete, Navigation, and Bookmarks</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .back_front_bookmark{
+            justify-content: space-between;
+            display: flex;
+            align-items: flex-end;
+        }
+        .input-section {
+            margin-bottom: 20px;
+            justify-content: center;
+            text-align: center;
+        }
+        button {
+            margin: 5px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #url-display {
+            font-size: 18px;
+            color: #333;
+            height: 2.9em;
+            resize: none;
+        }
+        #url{
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 10px;
+            height: 3em;
+            border: 3px solid #ccc;
+            border-radius: 30px;
+            padding-right: 40px;
+        }
+        .bookmarks{
+            list-style-type: none;
+
+        }
+        .suggestion-box {
+    padding: 5px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+        }
+
+#suggestion-list {
+    list-style-type: none;
+    border: 2px solid rgb(65, 61, 61);
+    border-radius: 10px;
+    width: min-content;
+    text-align: center;
+    margin: 0;
+    padding-left: 50px;
+    padding-right: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+        .heading{
+            text-align: center;
+            justify-content: center;
+            font-size: 50px;
+            display: flex;
+            color: rgb(40, 113, 180);
+        }
+        #t{ 
+            color: rgb(245, 211, 13);
+        }
+        #u{
+            color: rgb(15, 228, 107);
+        }
+        #c{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="back_front_bookmark">
+        <button onclick="goBack()" title="Go Back">&larr;</button>
+        <button onclick="goForward()" title="Move Forward">&rarr;</button>
+        <button class="reload-button" onclick="reloadPage()"><span style="font-size: larger;">&#8635;</span></button>
+        <textarea rows="3" cols="180" id = "url-display" placeholder="Search or enter the URL"></textarea>
+        <button onclick="addBookmark()" title="Bookmark This Tab">&#11090;</button>
+    </div>
+
+
+    <div class="bookmarks">
+        <p id="bookmark-list"></p>
+    </div>
+
+
+    <div class="heading">
+        <h1 id="s">S</h1>
+        <h1 id="t">T</h1>
+        <h1 id="u">U</h1>
+        <h1 id="c">C</h1>
+        <h1 id="k">K</h1>
+    </div>
+
+
+    
+    <div class="input-section">
+
+        <div class="search">
+            <input type="text" id="url" placeholder="Enter URL" size="50" height="2em" oninput="showSuggestions(this.value)">
+            <button onclick="visit()">&#x1F50D;</button>
+        </div>
+        <div class="suggestion-box" id="suggestion-box">
+            <ul id="suggestion-list"></ul>
+        </div>
+    </div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
